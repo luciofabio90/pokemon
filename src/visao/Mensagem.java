@@ -14,7 +14,7 @@ public class Mensagem {
 
 	public int inicio() {
 		
-		Object[] options = { "Aquatico", "Fogo", "Cancelar" };
+		Object[] options = { "Aquatico", "Fogo", "Sair" };
 		try {
 			return JOptionPane.showOptionDialog(null, "Pense em um Pokemon Aquatico ou Fogo", "Jogo dos Pokemons", JOptionPane.DEFAULT_OPTION, 
 					JOptionPane.WARNING_MESSAGE, new ImageIcon(ImageIO.read(getClass().getResource("/imagem/pokemon.png"))) , options, options[0]);
@@ -36,6 +36,10 @@ public class Mensagem {
 				: JOptionPane.showConfirmDialog((Component) null,
 						"O Pokemon que você pensou é " + p.getRespostaNao() + "?", "Informe", 0);
 	}
+	
+	public int pergunta(Pokemon p) {
+		return JOptionPane.showConfirmDialog((Component)null, "O pokemon que você pensou " + p.getCaracteristica() + "?", "Informe", 0);
+	}
 
 	public String entrada(Pokemon p, String mensagem) {
 		String valor;
@@ -54,14 +58,14 @@ public class Mensagem {
 	}
 	
 	public void mostraMensagemVencedor() {
-		try {
-			JOptionPane.showMessageDialog((Component) null,null,"GANHEI !!!!!",1,new ImageIcon(ImageIO.read(getClass().getResource("/imagem/brent.gif"))));
-		} catch (HeadlessException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		try {
+			JOptionPane.showMessageDialog((Component) null,null,"GANHEI !!!!!",1,new ImageIcon("src/imagem/brent.gif"));//ImageIO.read(getClass().getResource("/imagem/brent.gif"))));
+//		} catch (HeadlessException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 	}
 }

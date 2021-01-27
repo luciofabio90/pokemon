@@ -17,6 +17,7 @@ public class Logica {
 			respostaInicio = mensagem.inicio();
 			
 			int respostaPergunta = 0;
+			int respostaEhPokemon = -1;
 			
 			if (respostaInicio > -1 && respostaInicio < 2) {
 				if(respostaInicio == 0) {
@@ -27,7 +28,14 @@ public class Logica {
 				do {
 					Pokemon pokemon = (Pokemon) dao.getPokemon().get(flag);
 					Pokemon filho = funcoes.retornaFilho(dao.getPokemon(), (Pokemon) dao.getPokemon().get(flag), respostaPergunta);
-					int respostaEhPokemon = mensagem.perguntaSeEh(pokemon, respostaPergunta);
+					
+					if(flag != 0) {
+						respostaPergunta = mensagem.pergunta(pokemon);					
+					}
+					
+					if(respostaPergunta == 1 && flag == 0) {
+						respostaEhPokemon = mensagem.perguntaSeEh(pokemon, respostaPergunta);						
+					}	
 
 					if (filho == null || respostaEhPokemon == 0) {
 						if (respostaEhPokemon == 0) {
